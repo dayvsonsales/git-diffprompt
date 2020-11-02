@@ -4,7 +4,7 @@ An interactive command to diff unstaged tracked files in your git repository usi
 
 ![example](.github/assets/cmd.svg)
 
-## How to use
+## How to use it
 
 1. Clone repository and go inside it
 2. Run `npm install`
