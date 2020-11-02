@@ -37,7 +37,7 @@ class DiffPrompt {
       }
     }
     console.log(
-      "You're not in a git repository or there's no unstaged tracked files"
+      "You're not in a git repository or there are no unstaged tracked files"
     );
   }
 }
