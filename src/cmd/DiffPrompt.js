@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
-const { unstagedTracked, diffTool } = require("~/src/utils/git");
-const { parserStatus } = require("~/src/utils/parser");
+const { unstagedTracked, diffTool } = require("../utils/git");
+const { parserStatus } = require("../utils/parser");
 
 class DiffPrompt {
   async run(localDirectory) {
