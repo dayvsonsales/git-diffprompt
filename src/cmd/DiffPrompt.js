@@ -1,12 +1,15 @@
 const inquirer = require("inquirer");
+const logger = require("../logger");
 const { unstagedTracked, diffTool } = require("../utils/git");
 const { parserStatus } = require("../utils/parser");
 
 class DiffPrompt {
   async run(localDirectory) {
-    while (true) {
-      console.clear();
+    console.clear();
 
+    let diffError = false;
+
+    while (true) {
       const filesUnstagedTracked = unstagedTracked(localDirectory);
 
       if (filesUnstagedTracked) {
@@ -28,15 +31,21 @@ class DiffPrompt {
             type: "input",
           });
 
-          diffTool(file, commitCompare);
+          console.clear();
+          diffError = diffTool(file, commitCompare);
         } else {
           break;
         }
       } else {
         break;
       }
+
+      if (!diffError) {
+        console.clear();
+      }
     }
-    console.log(
+
+    logger.error(
       "You're not in a git repository or there are no unstaged tracked files"
     );
   }

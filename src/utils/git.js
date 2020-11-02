@@ -1,4 +1,5 @@
 const shell = require("shelljs");
+const logger = require("../logger");
 
 const GIT_STATUS_UNSTAGED_TRACKED = "git status  --short";
 const GIT_DIFFTOOL = "git difftool";
@@ -18,7 +19,7 @@ function unstagedTracked(localDirectory) {
   if (exec.code == 0) {
     return exec.stdout;
   } else {
-    throw new Error("Filed to execute git command");
+    return logger.error(exec.stderr);
   }
 }
 
@@ -30,13 +31,14 @@ function diffTool(file, commitCompare) {
       `${GIT_DIFFTOOL} --no-prompt ${commitCompare} -- ${file} > /dev/tty < /dev/tty`
     );
   } else {
-    throw new Error("Need to pass a file");
+    logger.error("Need to pass a file");
   }
 
   if (exec.code == 0) {
-    return exec.stdout;
+    return false;
   } else {
-    return;
+    logger.error(exec.stderr);
+    return true;
   }
 }
 

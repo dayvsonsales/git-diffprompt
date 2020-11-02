@@ -1,4 +1,5 @@
 const shell = require("shelljs");
+const logger = require("../logger");
 
 const GREP_WHITESPACES = "grep '^\\s'";
 const CUT = "cut -d ' ' -f 3";
@@ -13,7 +14,7 @@ function parserStatus(status) {
     files.pop();
     return files;
   } else {
-    throw new Error(cmd.stderr);
+    logger.error(cmd.stderr);
   }
 }
 
