@@ -7,20 +7,25 @@
   "description": "Interactive git difftool",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^26.0.15",
     "inquirer": "^7.3.3",
     "log4js": "^6.3.0",
     "module-alias": "^2.2.2",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
-    "jest": "^26.6.2"
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.2",
+    "prettier": "^2.1.2"
   }
 }

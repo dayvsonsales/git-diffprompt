@@ -1,6 +1,7 @@
-const log4js = require("log4js");
-const logger = log4js.getLogger("git-diffprompt");
+const log4js = require('log4js');
 
-logger.level = "error";
+const logger = log4js.getLogger('git-diffprompt');
+
+logger.level = 'error';
 
 module.exports = logger;

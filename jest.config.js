@@ -1,3 +1,4 @@
 module.exports = {
-  verbose: true,
+  verbose: false,
+  forceExit: true,
 };

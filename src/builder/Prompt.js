@@ -1,4 +1,4 @@
-const inquirer = require("inquirer");
+const inquirer = require('inquirer');
 
 class Prompt {
   constructor(params) {

@@ -1,5 +1,5 @@
-const shell = require("shelljs");
-const logger = require("../logger");
+const shell = require('shelljs');
+const logger = require('../logger');
 
 const GREP_WHITESPACES = "grep '^\\s'";
 const CUT = "cut -d ' ' -f 3";
@@ -9,13 +9,13 @@ function parserStatus(status) {
     silent: true,
   });
 
-  if (cmd.code == 0) {
-    const files = cmd.stdout.split("\n");
+  if (cmd.code === 0) {
+    const files = cmd.stdout.split('\n');
     files.pop();
     return files;
-  } else {
-    logger.error(cmd.stderr);
   }
+
+  logger.error(cmd.stderr);
 }
 
 module.exports = { parserStatus };
