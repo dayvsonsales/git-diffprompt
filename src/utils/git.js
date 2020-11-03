@@ -1,17 +1,17 @@
 const shell = require('shelljs');
 const logger = require('../logger');
 
-const GIT_STATUS_UNSTAGED_TRACKED = 'git status  --short';
+const GIT_STATUS_NOT_STAGED_TRACKED = 'git status  --short';
 const GIT_DIFFTOOL = 'git difftool';
 
-function unstagedTracked(localDirectory) {
+function notStagedTracked(localDirectory) {
   let exec;
 
   if (!localDirectory) {
-    exec = shell.exec(`${GIT_STATUS_UNSTAGED_TRACKED}`, { silent: true });
+    exec = shell.exec(`${GIT_STATUS_NOT_STAGED_TRACKED}`, { silent: true });
   } else {
     exec = shell.exec(
-      `cd ${localDirectory} && ${GIT_STATUS_UNSTAGED_TRACKED}`,
+      `cd ${localDirectory} && ${GIT_STATUS_NOT_STAGED_TRACKED}`,
       { silent: true }
     );
   }
@@ -46,6 +46,6 @@ function diffTool(file, commitCompare) {
 }
 
 module.exports = {
-  unstagedTracked,
+  notStagedTracked,
   diffTool,
 };

@@ -1,19 +1,19 @@
 const logger = require('../../../src/logger');
 const git = require('../../../src/utils/git');
-const { unstagedTracked, diffTool } = require('../../../src/utils/git');
+const { notStagedTracked, diffTool } = require('../../../src/utils/git');
 
 describe('test git helper file', () => {
-  it('should return unstaged files', () => {
+  it('should return not staged files', () => {
     const mockGit = jest
-      .spyOn(git, 'unstagedTracked')
+      .spyOn(git, 'notStagedTracked')
       .mockImplementation(() => ' M package.json');
-    git.unstagedTracked();
+    git.notStagedTracked();
     expect(mockGit).toHaveBeenCalled();
   });
 
   it('should not pass with unknown directory', () => {
     const mockLog = jest.spyOn(logger, 'error');
-    unstagedTracked('unknown directory');
+    notStagedTracked('unknown directory');
     expect(mockLog).toHaveBeenCalled();
   });
 

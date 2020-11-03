@@ -1,6 +1,6 @@
 # git diffprompt
 
-An interactive command to diff unstaged tracked files in your git repository using git difftool.
+An interactive command to diff not staged tracked files in your git repository using git difftool.
 
 ![example](.github/assets/cmd.svg)
 

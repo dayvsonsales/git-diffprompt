@@ -1,5 +1,5 @@
 const logger = require('../logger');
-const { unstagedTracked, diffTool } = require('../utils/git');
+const { notStagedTracked, diffTool } = require('../utils/git');
 const { parserStatus } = require('../utils/parser');
 const Prompt = require('../builder/Prompt');
 
@@ -10,10 +10,10 @@ class DiffPrompt {
     this.diffError = false;
 
     while (true) {
-      const filesUnstagedTracked = unstagedTracked(localDirectory);
+      const filesNotStagedTracked = notStagedTracked(localDirectory);
 
-      if (filesUnstagedTracked) {
-        const choices = parserStatus(filesUnstagedTracked);
+      if (filesNotStagedTracked) {
+        const choices = parserStatus(filesNotStagedTracked);
 
         if (choices.length !== 0) {
           const { file } = await new Prompt({
@@ -46,7 +46,7 @@ class DiffPrompt {
     }
 
     logger.error(
-      "You're not in a git repository or there are no unstaged tracked files"
+      "You're not in a git repository or there are not staged tracked files"
     );
   }
 }
