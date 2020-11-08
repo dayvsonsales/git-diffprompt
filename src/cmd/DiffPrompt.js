@@ -7,6 +7,7 @@ class DiffPrompt {
   async run(localDirectory) {
     console.clear();
 
+    this._defaultFile = '';
     this.diffError = false;
 
     while (true) {
@@ -22,7 +23,10 @@ class DiffPrompt {
             type: 'list',
             choices,
             loop: true,
+            default: this._defaultFile,
           }).start();
+
+          this._defaultFile = file;
 
           const { commitCompare } = await new Prompt({
             name: 'commitCompare',
@@ -32,7 +36,7 @@ class DiffPrompt {
           }).start();
 
           console.clear();
-          diffError = diffTool(file, commitCompare);
+          this.diffError = diffTool(file, commitCompare);
         } else {
           break;
         }
@@ -40,7 +44,7 @@ class DiffPrompt {
         break;
       }
 
-      if (!diffError) {
+      if (!this.diffError) {
         console.clear();
       }
     }
